@@ -10,15 +10,11 @@
         "constant": false,
         "inputs": [
             {
+                "name": "_sessionName",
+                "type": "string"
+            },
+            {
                 "name": "_feedback",
-                "type": "uint256"
-            },
-            {
-                "name": "_startTime",
-                "type": "uint256"
-            },
-            {
-                "name": "_feedbackTime",
                 "type": "uint256"
             }
         ],
@@ -26,43 +22,6 @@
         "outputs": [],
         "payable": false,
         "stateMutability": "nonpayable",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [
-            {
-                "name": "_startDate",
-                "type": "uint256"
-            },
-            {
-                "name": "_rateTime",
-                "type": "uint256"
-            }
-        ],
-        "name": "Time",
-        "outputs": [
-            {
-                "name": "",
-                "type": "bool"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
-        "type": "function"
-    },
-    {
-        "constant": true,
-        "inputs": [],
-        "name": "seeResult",
-        "outputs": [
-            {
-                "name": "",
-                "type": "uint256[]"
-            }
-        ],
-        "payable": false,
-        "stateMutability": "view",
         "type": "function"
     },
     {
@@ -77,26 +36,83 @@
                 "type": "string"
             },
             {
-                "name": "_startDate",
+                "name": "_feedbackTime",
                 "type": "uint256"
             },
             {
-                "name": "_rateTime",
-                "type": "uint256"
-            },
-            {
-                "name": "lecturer",
+                "name": "_lecturer",
                 "type": "bytes1[]"
             },
             {
-                "name": "attendes",
-                "type": "bytes1[]"
+                "name": "_attendes",
+                "type": "address[]"
             }
         ],
         "name": "createSession",
         "outputs": [],
         "payable": false,
         "stateMutability": "nonpayable",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_sessionName",
+                "type": "string"
+            }
+        ],
+        "name": "seeResult",
+        "outputs": [
+            {
+                "name": "",
+                "type": "uint8[]"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_attende",
+                "type": "address"
+            },
+            {
+                "name": "_attendes",
+                "type": "address[]"
+            }
+        ],
+        "name": "findAddress",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "pure",
+        "type": "function"
+    },
+    {
+        "constant": true,
+        "inputs": [
+            {
+                "name": "_sessionName",
+                "type": "string"
+            }
+        ],
+        "name": "Time",
+        "outputs": [
+            {
+                "name": "",
+                "type": "bool"
+            }
+        ],
+        "payable": false,
+        "stateMutability": "view",
         "type": "function"
     },
     {

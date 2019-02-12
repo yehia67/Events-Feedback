@@ -78,17 +78,16 @@ FeedBack.prototype.caclculateTime = function(_startTime,_endTime,_Time){
 //Get Time in days
 FeedBack.prototype.onSubmit = function(){
     $("#btn").click(function(){
+        alert("click");
         var seasonName =  $('#session_name').val();
         var discription =  $('#discription').val();
         var start_date =  $('#start_date').val();
         var end_date =  $('#end_date').val();
         var time =  $('#time').val();
+        var Time = caclculateTime(start_date,end_date,time);
         var lecturers =  $('#lecturers').val().split(','); 
         var attendes =  $('#attendes').val().split(',');
-        var Time = caclculateTime(start_date,end_date,time);
-        var startDateInDayes = Math.ceil(parseDate(start_date).getTime()/(1000 * 3600 * 24));
-        createSession(seasonName,discription,startDateInDayes,Time,lecturer,attendes,);
-               
+        createSession(seasonName,discription,Time,0,lecturer,attendes);       
     });
 
 

@@ -14,15 +14,29 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     </head>
     <body>
-     
-     
-       <!--Start Form-->
-      <form class="text-capitalize p-2">
+
+
+<!-- Create Event Button -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createSession">
+ create events form
+</button>
+
+<!-- Create Event Modal -->
+<div class="modal fade" id="createSession" tabindex="-1" role="dialog" style="background-color: #ffff" aria-labelledby="createSessionCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      
+        
+      </div>
+      <div class="modal-body">
+          <!--Start Form-->
+       <form   class="text-capitalize p-2">
         
         <!--Session Name-->
         <div class="form-group">
-            <label for="session_name">session name</label>
-            <input type="text" class="form-control" id="session_name">
+            <label for="create_session_name">session name</label>
+            <input type="text" class="form-control" id="create_session_name">
         </div>
 
          <!--Discription-->
@@ -62,21 +76,104 @@
             <input type="text" class="form-control" id="lecturers">
         </div>
         
-           
+        
+        
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" id="create_btn" class="btn btn-primary">Submit</button>
+         
+    </form>
+     <!--End Form-->
+      </div>
+    </div>
+  </div>
+</div>
 
-         <!--Rate
+<!-- Make  Feedback Button -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#makeFeedback">
+ Feedback form
+</button>
+
+<!-- Make  Feedback Modal -->
+<div class="modal fade" id="makeFeedback" tabindex="-1" role="dialog" style="background-color: #ffff" aria-labelledby="makeFeedbackCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      
+        
+      </div>
+      <div class="modal-body">
+          <!--Start Form-->
+       <form   class="text-capitalize p-2">
+        
+        <!--Session Name-->
+        <div class="form-group">
+            <label for="session_name">session name</label>
+            <input type="text" class="form-control" id="feedback_session_name">
+        </div>
+
+         <!--Rate-->
           <div class="form-group">
              <label for="feedback">Rate Us</label> <br> 
               <label for="feedback"> dislike </label>  <input type="range" required class="custom-range m-3" min="0" max="5" id="feedBack">  <label for="feedback"> like  </label>      
-          </div>-->
-        
-        <!--Submit--> 
-         <button type="submit" id="btn" class="btn btn-primary">Submit</button>
-         <div id="result" ></div>
+          </div>
+     
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" id="feedback_btn" class="btn btn-primary">Submit</button>
+         
     </form>
      <!--End Form-->
+      </div>
+    </div>
+  </div>
+</div>
 
-<p id="result" value=""></p>
+<!-- See Result Button -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#makeFeedback">
+ Feedback form
+</button>
+
+<!-- See Result Modal -->
+<div class="modal fade" id="makeFeedback" tabindex="-1" role="dialog" style="background-color: #ffff" aria-labelledby="makeFeedbackCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+      
+        
+      </div>
+      <div class="modal-body">
+          <!--Start Form-->
+       <form   class="text-capitalize p-2">
+        
+        <!--Session Name-->
+        <div class="form-group">
+            <label for="session_name">session name</label>
+            <input type="text" class="form-control" id="feedback_session_name">
+        </div>
+
+         <!--Rate-->
+          <div class="form-group">
+             <label for="feedback">Rate Us</label> <br> 
+              <label for="feedback"> dislike </label>  <input type="range" required class="custom-range m-3" min="0" max="5" id="feedBack">  <label for="feedback"> like  </label>      
+          </div>
+     
+     
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="submit" id="feedback_btn" class="btn btn-primary">Submit</button>
+     
+    </form>
+     <!--End Form-->
+      </div>
+    </div>
+  </div>
+</div>
+<div id="result" ></div>
+
     </body>
 
 </html>
