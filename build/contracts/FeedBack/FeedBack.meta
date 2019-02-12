@@ -1,0 +1,24 @@
+{
+    "compile": {
+        "gasEstimates": {
+            "creation": {
+                "codeDepositCost": "726800",
+                "executionCost": "760",
+                "totalCost": "727560"
+            },
+            "external": {
+                "Time(string)": "infinite",
+                "createSession(string,string,uint256,bytes1[],address[])": "infinite",
+                "findAddress(address,address[])": "infinite",
+                "seeResult(string)": "infinite",
+                "takeVote(string,uint256)": "infinite"
+            },
+            "internal": {
+                "feedBack(string memory,uint256)": "infinite",
+                "initFeedback(string memory)": "infinite",
+                "setFeedbackTime(string memory)": "infinite",
+                "validate(string memory,address[] memory)": "infinite"
+            }
+        }
+    }
+}
