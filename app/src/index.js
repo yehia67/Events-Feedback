@@ -28,11 +28,51 @@ const App = {
         }
     },
 
+    //Create session
+    createSession: async function(_sessionName, _description, _feedbackTime, _lecturer, _attendes) {
+        const { createSession } = this.meta.methods;
+        await createSession(_sessionName, _description, _feedbackTime, _lecturer, _attendes).call();
+        alert("done creating session");
+    },
 
-    Test: async function() {
-        const { Test } = this.meta.methods;
-        const test = await Test().call();
-        console.log(test);
+    //Events Time
+    parseDate: function(input) {
+        var parts = input.match(/(\d+)/g);
+        // New Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
+        return new Date(parts[0], parts[1] - 1, parts[2]); // months are 0-based
+    },
+    caclculateTime: async function(_startTime, _endTime, _Time) {
+        var start = this.parseDate(_startTime);
+        var end = this.parseDate(_endTime);
+        var timeDiff = Math.abs(end.getTime() - start.getTime());
+        var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+        var time = parseInt(_Time);
+        return diffDays + _Time;
+
+    },
+    onSubmit: async function() {
+        var seasonName = $('#create_session_name').val();
+
+        var discription = $('#discription').val();
+
+        var start_date = $('#start_date').val();
+
+        var end_date = $('#end_date').val();
+
+        var time = $('#time').val();
+        this.caclculateTime(start_date, end_date, time);
+        //caclulate time
+
+        var lecturers = $('#lecturers').val().split(',');
+
+        var attendes = $('#attendes').val().split(',');
+
+        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+
+        this.createSession(seasonName, discription, time, Web3.utils.fromAscii(lecturers), attendes);
+
+        alert("done");
+
     },
 
 };

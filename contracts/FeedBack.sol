@@ -1,25 +1,21 @@
 pragma solidity >=0.4.21 <0.6.0;
 
 contract FeedBack {
-  
-  function Test() public  returns(bool)  {
-        return true;
-    }
-  
+
   //Create session
   struct session {
       string sessionName;
       string description;
       uint feedbackTime;
       uint feedbackDate;
-      byte[] lecturer;
+      bytes32[] lecturer;
       address[] attendes;
   }
  
   mapping ( string => session) sessions;
   mapping ( string => uint8[]) feedback;
  
-  function createSession(string memory _sessionName,string memory _description,uint _feedbackTime,byte[] memory  _lecturer,address[] memory  _attendes) public
+  function createSession(string memory _sessionName,string memory _description,uint _feedbackTime,bytes32[] memory  _lecturer,address[] memory  _attendes) public
   {
       sessions[_sessionName] = session(_sessionName,_description,_feedbackTime,0,_lecturer,_attendes);
       initFeedback(_sessionName);

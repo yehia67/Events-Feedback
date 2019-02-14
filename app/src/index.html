@@ -67,13 +67,13 @@
                         <!--attendes addresses-->
                         <div class="form-group">
                             <label for="attendes">attendes addresses (seperate them by comma ',')</label>
-                            <input type="text" class="form-control" id="lecturers">
+                            <input type="text" class="form-control" id="attendes">
                         </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" id="create_btn" class="btn btn-primary">Submit</button>
 
+                        <div class="form-group">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="button" onclick="return App.onSubmit()" class="btn btn-primary">Submit</button>
+                        </div>
                     </form>
                     <!--End Form-->
                 </div>
@@ -84,7 +84,7 @@
     <!-- Make  Feedback Button -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#makeFeedback">
         Feedback form
-       </button>
+    </button>
 
     <!-- Make  Feedback Modal -->
     <div class="modal fade" id="makeFeedback" tabindex="-1" role="dialog" style="background-color: #ffff" aria-labelledby="makeFeedbackCenterTitle" aria-hidden="true">
@@ -100,74 +100,32 @@
 
                         <!--Session Name-->
                         <div class="form-group">
-                            <label for="session_name">session name</label>
+                            <label for="feedback_session_name">session name</label>
                             <input type="text" class="form-control" id="feedback_session_name">
                         </div>
 
                         <!--Rate-->
                         <div class="form-group">
                             <label for="feedback">Rate Us</label> <br>
-                            <label for="feedback"> dislike </label> <input type="range" required class="custom-range m-3" min="0" max="5" id="feedBack"> <label for="feedback"> like  </label>
+                            <label for="feedback"> dislike </label> <input type="range" required class="custom-range m-3" min="0" max="5" id="feedback"> <label for="feedback"> like  </label>
                         </div>
-
-
-                        <div class="modal-footer">
+                        <div class="form-group">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="submit" id="feedback_btn" class="btn btn-primary">Submit</button>
-
+                        </div>
                     </form>
                     <!--End Form-->
-                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- See Result Button -->
-        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#makeFeedback">
-        Feedback form
-       </button>
-
-        <!-- See Result Modal -->
-        <div class="modal fade" id="makeFeedback" tabindex="-1" role="dialog" style="background-color: #ffff" aria-labelledby="makeFeedbackCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        See Reviews
-                    </div>
-                    <div class="modal-body">
-                        <!--Start Form-->
-                        <form class="text-capitalize p-2">
-
-                            <!--Session Name-->
-                            <div class="form-group">
-                                <label for="session_name">session name</label>
-                                <input type="text" class="form-control" id="feedback_session_name">
-                            </div>
-
-                            <!--Rate-->
-                            <div class="form-group">
-                                <label for="feedback">Rate Us</label> <br>
-                                <label for="feedback"> dislike </label> <input type="range" required class="custom-range m-3" min="0" max="5" id="feedBack"> <label for="feedback"> like  </label>
-                            </div>
+    </div>
 
 
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="submit" id="feedback_btn" class="btn btn-primary">Submit</button>
-
-                        </form>
-                        <!--End Form-->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="result"></div>
-
-            <!--Scripts-->
-            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-            <script src="index.js"></script>
+    <!--Scripts-->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="index.js"></script>
 </body>
 
 </html>
