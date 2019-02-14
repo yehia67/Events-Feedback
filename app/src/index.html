@@ -2,34 +2,172 @@
 <html>
 
 <head>
-    <title>MetaCoin | Truffle Webpack Demo w/ Frontend</title>
+    <title>Think-Big | Events creator Dapp</title>
+
+    <!--Links-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
-<style>
-    input {
-        display: block;
-        margin-bottom: 12px;
-    }
-</style>
 
 <body>
-    <h1>MetaCoin — Example Truffle Dapp</h1>
-    <p>You have <strong class="balance">loading...</strong> META</p>
 
-    <h1>Send MetaCoin</h1>
+    <!-- Create Event Button -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createSession">
+        Create Events Form
+    </button>
 
-    <label for="amount">Amount:</label>
-    <input type="text" id="amount" placeholder="e.g. 95" />
+    <!-- Create Event Modal -->
+    <div class="modal fade" id="createSession" tabindex="-1" role="dialog" style="background-color: #ffff" aria-labelledby="createSessionCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Create Event
+                </div>
+                <div class="modal-body">
 
-    <label for="receiver">To address:</label>
-    <input type="text" id="receiver" placeholder="e.g. 0x93e66d9baea28c17d9fc393b53e3fbdd76899dae" />
+                    <!--Start Form-->
+                    <form class="text-capitalize p-2">
 
-    <button onclick="App.Test()">Send MetaCoin</button>
+                        <!--Session Name-->
+                        <div class="form-group">
+                            <label for="create_session_name">session name</label>
+                            <input type="text" class="form-control" id="create_session_name">
+                        </div>
 
-    <p id="status"></p>
-    <p>
-        <strong>Hint:</strong> open the browser developer console to view any errors and warnings.
-    </p>
-    <script src="index.js"></script>
+                        <!--Discription-->
+                        <div class="form-group">
+                            <label for="discription">discription</label>
+                            <input type="text" class="form-control" id="discription">
+                        </div>
+
+                        <!--Session Start Date-->
+                        <div class="form-group">
+                            <label for="start_date">start date</label>
+                            <input type="date" class="form-control" id="start_date">
+                        </div>
+
+                        <!--Session End Date-->
+                        <div class="form-group">
+                            <label for="end_date">end date</label>
+                            <input type="date" class="form-control" id="end_date">
+                        </div>
+
+                        <!--Rate Time-->
+                        <div class="form-group">
+                            <label for="time">how many days do you want to keep feedback?</label>
+                            <input type="number" min="0" class="form-control" id="time">
+                        </div>
+
+
+                        <!--Lecturers names-->
+                        <div class="form-group">
+                            <label for="lecturers">lecturers names (seperate them by comma ',')</label>
+                            <input type="text" class="form-control" id="lecturers">
+                        </div>
+
+                        <!--attendes addresses-->
+                        <div class="form-group">
+                            <label for="attendes">attendes addresses (seperate them by comma ',')</label>
+                            <input type="text" class="form-control" id="lecturers">
+                        </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" id="create_btn" class="btn btn-primary">Submit</button>
+
+                    </form>
+                    <!--End Form-->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Make  Feedback Button -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#makeFeedback">
+        Feedback form
+       </button>
+
+    <!-- Make  Feedback Modal -->
+    <div class="modal fade" id="makeFeedback" tabindex="-1" role="dialog" style="background-color: #ffff" aria-labelledby="makeFeedbackCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    Tell Us Your Opinion
+                </div>
+                <div class="modal-body">
+
+                    <!--Start Form-->
+                    <form class="text-capitalize p-2">
+
+                        <!--Session Name-->
+                        <div class="form-group">
+                            <label for="session_name">session name</label>
+                            <input type="text" class="form-control" id="feedback_session_name">
+                        </div>
+
+                        <!--Rate-->
+                        <div class="form-group">
+                            <label for="feedback">Rate Us</label> <br>
+                            <label for="feedback"> dislike </label> <input type="range" required class="custom-range m-3" min="0" max="5" id="feedBack"> <label for="feedback"> like  </label>
+                        </div>
+
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" id="feedback_btn" class="btn btn-primary">Submit</button>
+
+                    </form>
+                    <!--End Form-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- See Result Button -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#makeFeedback">
+        Feedback form
+       </button>
+
+        <!-- See Result Modal -->
+        <div class="modal fade" id="makeFeedback" tabindex="-1" role="dialog" style="background-color: #ffff" aria-labelledby="makeFeedbackCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        See Reviews
+                    </div>
+                    <div class="modal-body">
+                        <!--Start Form-->
+                        <form class="text-capitalize p-2">
+
+                            <!--Session Name-->
+                            <div class="form-group">
+                                <label for="session_name">session name</label>
+                                <input type="text" class="form-control" id="feedback_session_name">
+                            </div>
+
+                            <!--Rate-->
+                            <div class="form-group">
+                                <label for="feedback">Rate Us</label> <br>
+                                <label for="feedback"> dislike </label> <input type="range" required class="custom-range m-3" min="0" max="5" id="feedBack"> <label for="feedback"> like  </label>
+                            </div>
+
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" id="feedback_btn" class="btn btn-primary">Submit</button>
+
+                        </form>
+                        <!--End Form-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="result"></div>
+
+            <!--Scripts-->
+            <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+            <script src="index.js"></script>
 </body>
 
 </html>

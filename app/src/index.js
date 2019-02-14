@@ -22,42 +22,19 @@ const App = {
             const accounts = await web3.eth.getAccounts();
             this.account = accounts[0];
 
-            this.refreshBalance();
+
         } catch (error) {
             console.error("Could not connect to contract or chain.");
         }
     },
 
-    refreshBalance: async function() {
-        const { getBalance } = this.meta.methods;
-        const balance = await getBalance(this.account).call();
 
-        const balanceElement = document.getElementsByClassName("balance")[0];
-        balanceElement.innerHTML = balance;
-    },
     Test: async function() {
         const { Test } = this.meta.methods;
         const test = await Test().call();
         console.log(test);
     },
-    sendCoin: async function() {
-        this.Test();
-        const amount = parseInt(document.getElementById("amount").value);
-        const receiver = document.getElementById("receiver").value;
 
-        this.setStatus("Initiating transaction... (please wait)");
-
-        const { sendCoin } = this.meta.methods;
-        await sendCoin(receiver, amount).send({ from: this.account });
-
-        this.setStatus("Transaction complete!");
-        this.refreshBalance();
-    },
-
-    setStatus: function(message) {
-        const status = document.getElementById("status");
-        status.innerHTML = message;
-    },
 };
 
 window.App = App;
