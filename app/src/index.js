@@ -63,12 +63,12 @@ const App = {
         this.caclculateTime(start_date, end_date, time);
         //caclulate time
 
-        var lecturers = $('#lecturers').val().split(',');
+        var lecturers = $('#lecturers').val();
 
         var attendes = $('#attendes').val().split(',');
 
         console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
+        //var lects = Web3.utils.fromAscii(lecturers);
         this.createSession(seasonName, discription, time, Web3.utils.fromAscii(lecturers), attendes);
 
         alert("done");
