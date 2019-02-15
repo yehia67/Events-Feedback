@@ -6,6 +6,7 @@
 
     <!--Links-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
 </head>
 
 <body>
@@ -72,7 +73,7 @@
 
                         <div class="form-group">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="submit" onclick="return App.onSubmit()" class="btn btn-primary">Submit</button>
+                            <button type="button" onclick="return App.onSubmit()" class="btn btn-primary">Submit</button>
                         </div>
                     </form>
                     <!--End Form-->
@@ -143,11 +144,14 @@
                             <label for="see_session_name">session name</label>
                             <input type="text" class="form-control" required id="see_session_name">
                         </div>
-
+                        <!--Submit button-->
                         <div class="form-group">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                             <button type="button" onclick="App.seeResult()" id="feedback_btn" class="btn btn-primary">Submit</button>
                         </div>
+                        <!--Show Result-->
+
+
                     </form>
                     <!--End Form-->
                 </div>

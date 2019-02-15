@@ -29,9 +29,9 @@ const App = {
     },
 
     //Create session
-    createSession: async function(_sessionName, _description, _feedbackTime, _lecturer, _attendes) {
+    createSession: async function(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes) {
         const { createSession } = this.meta.methods;
-        await createSession(_sessionName, _description, _feedbackTime, _lecturer, _attendes).call();
+        await createSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).call();
         alert("done creating session");
     },
 
@@ -41,35 +41,26 @@ const App = {
         // New Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
         return new Date(parts[0], parts[1] - 1, parts[2]); // months are 0-based
     },
-    caclculateTime: async function(_startTime, _endTime, _Time) {
-        var start = this.parseDate(_startTime);
-        var end = this.parseDate(_endTime);
-        var timeDiff = Math.abs(end.getTime() - start.getTime());
-        var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-        var time = parseInt(_Time);
-        return diffDays + _Time;
 
-    },
     onSubmit: async function() {
         var sessionName = $('#create_session_name').val();
 
         var discription = $('#discription').val();
 
-        var start_date = $('#start_date').val();
+        var start_date = this.parseDate($('#start_date').val());
+        var start = (start_date.getTime()) / 1000;
 
-        var end_date = $('#end_date').val();
-
+        var end_date = this.parseDate($('#end_date').val());
+        var end = (end_date.getTime()) / 1000;
         var time = $('#time').val();
-        this.caclculateTime(start_date, end_date, time);
-        //caclulate time
+
 
         var lecturers = $('#lecturers').val();
 
         var attendes = $('#attendes').val().split(',');
 
-        console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         //var lects = Web3.utils.fromAscii(lecturers);
-        this.createSession(sessionName, discription, time, Web3.utils.fromAscii(lecturers), attendes);
+        this.createSession(sessionName, discription, start, end + time, lecturers, attendes);
 
         alert("done");
 
