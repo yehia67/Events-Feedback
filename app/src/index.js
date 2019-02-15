@@ -51,7 +51,7 @@ const App = {
 
     },
     onSubmit: async function() {
-        var seasonName = $('#create_session_name').val();
+        var sessionName = $('#create_session_name').val();
 
         var discription = $('#discription').val();
 
@@ -69,10 +69,25 @@ const App = {
 
         console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
         //var lects = Web3.utils.fromAscii(lecturers);
-        this.createSession(seasonName, discription, time, Web3.utils.fromAscii(lecturers), attendes);
+        this.createSession(sessionName, discription, time, Web3.utils.fromAscii(lecturers), attendes);
 
         alert("done");
 
+    },
+    //Take Feedback
+    takeVote: async function() {
+        var _sessionName = $('#feedback_session_name').val();
+        var _feedback = $('#feedback').val();
+        const { takeVote } = this.meta.methods;
+        await takeVote(_sessionName, _feedback).call();
+        alert("done");
+    },
+    //See Result
+    seeResult: async function() {
+        var _sessionName = $('#see_session_name').val();
+        const { seeResult } = this.meta.methods;
+        await seeResult(_sessionName).call();
+        alert("done");
     },
 
 };
