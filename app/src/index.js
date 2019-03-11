@@ -37,8 +37,6 @@ const App = {
         let discription = 10;
         const { getSession } = this.meta.methods;
         discription = await getSession(_sessionName).call();
-        console.log("info = " + discription);
-        alert(discription);
     },
 
     //Events Time
@@ -75,15 +73,16 @@ const App = {
         var _sessionName = $('#feedback_session_name').val();
         var _feedback = $('#feedback').val();
         const { takeVote } = this.meta.methods;
-        await takeVote(_sessionName, _feedback).call();
+        await takeVote(_sessionName, _feedback).send({ from: this.account });
         alert("done");
     },
     //See Result
     seeResult: async function() {
         var _sessionName = $('#see_session_name').val();
+        let result = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         const { seeResult } = this.meta.methods;
-        await seeResult(_sessionName).call();
-        alert("done");
+        result = await seeResult(_sessionName).call();
+        alert(result);
     },
 
 };
