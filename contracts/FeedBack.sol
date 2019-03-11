@@ -30,7 +30,7 @@ contract FeedBack {
   // Make feedback
  
    function initFeedback(string memory _sessionName) private{
-       feedback[_sessionName] = new uint8[](11);
+       feedback[_sessionName] = new uint8[](5);
     }
      function feedBack(string memory _sessionName,uint _feedback) private{
       feedback[_sessionName][_feedback]++;
