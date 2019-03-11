@@ -52,15 +52,15 @@ const App = {
 
         var end_date = this.parseDate($('#end_date').val());
         var end = (end_date.getTime()) / 1000;
-        var time = $('#time').val();
-
+        var noOfDays = $('#no-of-days').val();
+        var nofDaysInSecond = noOfDays * 24 * 60 * 60;
 
         var lecturers = $('#lecturers').val();
 
         var attendes = $('#attendes').val().split(',');
 
         //var lects = Web3.utils.fromAscii(lecturers);
-        this.createSession(sessionName, discription, start, end + time, lecturers, attendes);
+        this.createSession(sessionName, discription, start, nofDaysInSecond + end, lecturers, attendes);
 
         alert("done");
 

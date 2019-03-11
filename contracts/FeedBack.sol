@@ -6,8 +6,8 @@ contract FeedBack {
   struct session {
       string sessionName;
       string description;
-      uint feedbackTime;
-      uint feedbackDate;
+      uint startTime;
+      uint endTime;
       string lecturer;
       address[] attendes;
   }
@@ -15,11 +15,10 @@ contract FeedBack {
   mapping ( string => session) sessions;
   mapping ( string => uint8[]) feedback;
  
-  function createSession(string memory _sessionName,string memory _description,uint _feedbackTime,string memory  _lecturer,address[] memory  _attendes) public
+  function createSession(string memory _sessionName,string memory _description,uint _startTime,uint _endTime,string memory  _lecturer,address[] memory  _attendes) public
   {
-      sessions[_sessionName] = session(_sessionName,_description,_feedbackTime,0,_lecturer,_attendes);
+      sessions[_sessionName] = session(_sessionName,_description,_startTime,_endTime,_lecturer,_attendes);
       initFeedback(_sessionName);
-      setFeedbackTime(_sessionName);
   }
   
   // Make feedback
@@ -27,20 +26,17 @@ contract FeedBack {
    function initFeedback(string memory _sessionName) private{
        feedback[_sessionName] = new uint8[](11);
     }
-     function feedBack(string memory _sessionNam,uint _feedback) private{
-      feedback[_sessionNam][_feedback]++;
+     function feedBack(string memory _sessionName,uint _feedback) private{
+      feedback[_sessionName][_feedback]++;
   }   
 
   //Make Time
   // Will return `true` if the Time has passed
   // called, `false` if the Time hasn't pass yet
   function Time(string memory _sessionName) public view returns (bool){
-       return (now >=   sessions[_sessionName].feedbackDate );          
+       return (now >=   sessions[_sessionName].startTime  && now <= sessions[_sessionName].endTime);          
   }
-  function setFeedbackTime(string memory _sessionName) private{
-            sessions[_sessionName].feedbackDate = now +  sessions[_sessionName].feedbackTime;
-  }
-      
+   
    constructor() public {
        
    }  
