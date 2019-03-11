@@ -22,7 +22,6 @@ const App = {
             const accounts = await web3.eth.getAccounts();
             this.account = accounts[0];
 
-
         } catch (error) {
             console.error("Could not connect to contract or chain.");
         }
@@ -31,8 +30,15 @@ const App = {
     //Create session
     createSession: async function(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes) {
         const { createSession } = this.meta.methods;
-        await createSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).call();
-        alert("done creating session");
+        await createSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).send({ from: this.account });
+    },
+
+    getSession: async function(_sessionName) {
+        let discription = 10;
+        const { getSession } = this.meta.methods;
+        discription = await getSession(_sessionName).call();
+        console.log("info = " + discription);
+        alert(discription);
     },
 
     //Events Time
@@ -41,6 +47,7 @@ const App = {
         // New Date(year, month [, date [, hours[, minutes[, seconds[, ms]]]]])
         return new Date(parts[0], parts[1] - 1, parts[2]); // months are 0-based
     },
+
 
     onSubmit: async function() {
         var sessionName = $('#create_session_name').val();
@@ -59,11 +66,9 @@ const App = {
 
         var attendes = $('#attendes').val().split(',');
 
-        //var lects = Web3.utils.fromAscii(lecturers);
         this.createSession(sessionName, discription, start, nofDaysInSecond + end, lecturers, attendes);
 
-        alert("done");
-
+        this.getSession(sessionName);
     },
     //Take Feedback
     takeVote: async function() {

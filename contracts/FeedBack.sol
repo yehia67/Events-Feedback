@@ -1,7 +1,7 @@
-pragma solidity >=0.4.21 <0.6.0;
+pragma solidity >=0.4.22 <0.6.0;
 
 contract FeedBack {
-
+   string  x = "bsmlah";
   //Create session
   struct session {
       string sessionName;
@@ -17,10 +17,16 @@ contract FeedBack {
  
   function createSession(string memory _sessionName,string memory _description,uint _startTime,uint _endTime,string memory  _lecturer,address[] memory  _attendes) public
   {
-      sessions[_sessionName] = session(_sessionName,_description,_startTime,_endTime,_lecturer,_attendes);
+      session memory Session = session(_sessionName,_description,_startTime,_endTime,_lecturer,_attendes);
+      sessions[_sessionName] = Session;
       initFeedback(_sessionName);
+    
   }
-  
+  // get session  
+  function getSession(string memory _sessionName) public view returns(string memory){
+      return sessions[_sessionName].description;
+  }
+
   // Make feedback
  
    function initFeedback(string memory _sessionName) private{
