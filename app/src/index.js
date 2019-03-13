@@ -82,9 +82,9 @@ const App = {
         let result = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         const { seeResult } = this.meta.methods;
         result = await seeResult(_sessionName).call();
-        alert(result);
+        return result;
     },
-    drawChart: function() {
+    drawChart: function(result) {
         var colors = ['#007bff', '#28a745', '#333333', '#c3e6cb', '#dc3545', '#6c757d'];
         var donutOptions = {
             cutoutPercentage: 85,
@@ -96,7 +96,7 @@ const App = {
             datasets: [{
                 backgroundColor: colors.slice(0, 5),
                 borderWidth: 0,
-                data: [10, 20, 40, 10, 20]
+                data: [result[0], result[1], result[2], result[3], result[4]]
             }]
         };
 
@@ -110,8 +110,8 @@ const App = {
         }
     },
     showResult: function() {
-        this.getResult();
-        this.drawChart();
+        var result = this.getResult();
+        this.drawChart(result);
     }
 
 };
