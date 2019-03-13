@@ -77,7 +77,7 @@ const App = {
         alert("done");
     },
     //See Result
-    seeResult: async function() {
+    getResult: async function() {
         var _sessionName = $('#see_session_name').val();
         let result = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
         const { seeResult } = this.meta.methods;
@@ -85,51 +85,33 @@ const App = {
         alert(result);
     },
     drawChart: function() {
-
-        var chBar = document.getElementById("chBar");
-        var chartData = {
-            labels: ["Bad", "Normal", "Good", "Very Good", "Excellent"],
+        var colors = ['#007bff', '#28a745', '#333333', '#c3e6cb', '#dc3545', '#6c757d'];
+        var donutOptions = {
+            cutoutPercentage: 85,
+            legend: { position: 'bottom', padding: 5, labels: { pointStyle: 'circle', usePointStyle: true } }
+        };
+        // donut 1
+        var chDonutData1 = {
+            labels: ['Bad', 'Normal', 'Good', 'Very Good', 'Excellent'],
             datasets: [{
-                    data: [589, 445, 483, 503, 689, 692, 634],
-                    backgroundColor: colors[0]
-                },
-                {
-                    data: [209, 245, 383, 403, 589, 692, 580],
-                    backgroundColor: colors[1]
-                },
-                {
-                    data: [489, 135, 483, 290, 189, 603, 600],
-                    backgroundColor: colors[2]
-                },
-                {
-                    data: [639, 465, 493, 478, 589, 632, 674],
-                    backgroundColor: colors[4]
-                }
-            ]
+                backgroundColor: colors.slice(0, 5),
+                borderWidth: 0,
+                data: [10, 20, 40, 10, 20]
+            }]
         };
 
-        if (chBar) {
-            new Chart(chBar, {
-                type: 'bar',
-                data: chartData,
-                options: {
-                    scales: {
-                        xAxes: [{
-                            barPercentage: 0.9,
-                            categoryPercentage: 0.5
-                        }],
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: false
-                            }
-                        }]
-                    },
-                    legend: {
-                        display: false
-                    }
-                }
+        var chDonut1 = document.getElementById("chDonut1");
+        if (chDonut1) {
+            new Chart(chDonut1, {
+                type: 'pie',
+                data: chDonutData1,
+                options: donutOptions
             });
         }
+    },
+    showResult: function() {
+        this.getResult();
+        this.drawChart();
     }
 
 };

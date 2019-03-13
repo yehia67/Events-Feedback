@@ -147,15 +147,15 @@
                         <!--Submit button-->
                         <div class="form-group">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                            <button type="button" onclick="App.seeResult()" id="feedback_btn" class="btn btn-primary">Submit</button>
+                            <button type="button" onclick="App.showResult()" id="feedback_btn" class="btn btn-primary">Submit</button>
                         </div>
                         <!--Show Result-->
                         <div class="container">
-                            <div class="row my-2">
-                                <div class="col-md-12">
+                            <div class="row py-2">
+                                <div class="col-md-12 py-1">
                                     <div class="card">
                                         <div class="card-body">
-                                            <canvas id="chBar" height="100"></canvas>
+                                            <canvas id="chDonut1"></canvas>
                                         </div>
                                     </div>
                                 </div>
@@ -175,6 +175,8 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.3/Chart.bundle.min.js"></script>
     <script src="index.js"></script>
 </body>
 
