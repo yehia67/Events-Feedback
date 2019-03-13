@@ -85,6 +85,7 @@ const App = {
         return result;
     },
     drawChart: function(result) {
+        console.log("see = " + result);
         var colors = ['#007bff', '#28a745', '#333333', '#c3e6cb', '#dc3545', '#6c757d'];
         var donutOptions = {
             cutoutPercentage: 85,
@@ -110,8 +111,10 @@ const App = {
         }
     },
     showResult: function() {
-        var result = this.getResult();
-        this.drawChart(result);
+        var that = this;
+        this.getResult().then(function(data) {
+            that.drawChart(data);
+        })
     }
 
 };

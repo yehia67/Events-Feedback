@@ -1,7 +1,7 @@
 pragma solidity >=0.4.22 <0.6.0;
 
 contract FeedBack {
-   string  x = "bsmlah";
+
   //Create session
   struct session {
       string sessionName;
@@ -31,6 +31,12 @@ contract FeedBack {
  
    function initFeedback(string memory _sessionName) private{
        feedback[_sessionName] = new uint8[](5);
+       feedback[_sessionName][0] = (10/50) * 100;
+       feedback[_sessionName][1] = (17/50) * 100;
+       feedback[_sessionName][2] = (13/50) * 100;
+       feedback[_sessionName][3] = (35/50) * 100;
+       feedback[_sessionName][4] = (15/50) * 100;
+
     }
      function feedBack(string memory _sessionName,uint _feedback) private{
       feedback[_sessionName][_feedback]++;
