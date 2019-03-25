@@ -26,6 +26,15 @@ contract FeedBack {
   function getSession(string memory _sessionName) public view returns(string memory){
       return sessions[_sessionName].description;
   }
+  // check session 
+  function checkSession(string memory _sessionName) public view returns(bool){
+     /*  if (sessions[_sessionName]  !=   0 ) {
+          return true;
+          
+      } else {
+          return false;
+      } */
+  }
 
   // Make feedback
  
@@ -38,7 +47,8 @@ contract FeedBack {
        feedback[_sessionName][4] = (15/50) * 100;
 
     }
-     function feedBack(string memory _sessionName,uint _feedback) private{
+     
+    function feedBack(string memory _sessionName,uint _feedback) private{
       feedback[_sessionName][_feedback]++;
   }   
 
@@ -52,7 +62,14 @@ contract FeedBack {
    constructor() public {
        
    }  
-   
+
+
+
+
+
+
+
+
   //Validate voters.
   // Find Attendes public address return true if exist
   function findAddress(address _attende,address[] memory _attendes)  public pure returns (bool) {
@@ -63,6 +80,13 @@ contract FeedBack {
          }
          return false;
   }
+
+
+
+
+
+
+
   function validate(string memory _sessionName,address[] memory _attendes) private view returns(bool){
             //Attende
             require(!Time(_sessionName));
