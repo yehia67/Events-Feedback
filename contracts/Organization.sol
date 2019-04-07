@@ -24,3 +24,17 @@ contract Organization {
      }
   
 }
+
+//Session
+
+contract Session {
+     
+      address public creator;  // The address of parent Organization
+     
+      string sessionName,
+      string description,
+      uint startTime,
+      uint endTime,
+      address[] lecturer,
+      mapping(address => bool) public _attendes;    
+}
