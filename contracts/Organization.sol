@@ -36,5 +36,16 @@ contract Session {
       uint startTime,
       uint endTime,
       address[] lecturer,
-      mapping(address => bool) public _attendes;    
+      address[] _attendes;
+        
+      mapping(address => uint) public attendesFeedback; //institution boardMembers
+  
+      constructor (string _sessionName, string _description, uint _startTime,uint _endTime,address _lecturer,address _attendes) public{
+              sessionName =  _sessionName;
+              description = _description;
+              startTime = _startTime;
+              endTime = _endTime;
+              attendes = __attendes;
+              lecturer = _lecturer;
+      }    
 }
