@@ -55,4 +55,13 @@ contract Session {
             attendesFeedback[_attendes[i]] = -1;
         }
     }
+    function Time() public view returns (bool){
+       return (now >=  startTime  && now <= endTime);          
+  }
+
+  modifier checkTime(){
+        require(Time());
+        _;
+    }
+
 }
