@@ -36,9 +36,10 @@ contract Session {
       uint startTime,
       uint endTime,
       address[] lecturer,
-      address[] _attendes;
-        
-      mapping(address => uint) public attendesFeedback; //institution boardMembers
+      address[] attendes; 
+
+      uint8[] result; 
+      mapping(address => uint) public attendes_feedback; //institution boardMembers
   
       constructor (string _sessionName, string _description, uint _startTime,uint _endTime,address _lecturer,address _attendes) public{
               sessionName =  _sessionName;
@@ -50,18 +51,27 @@ contract Session {
               initAttendes(attendes);
       } 
 
-    function initAttendes(address[] _attendes){
+    function initAttendes(address[] _attendes) private{
            for(uint i=0 ; i < _attendes.length ; i++){
-            attendesFeedback[_attendes[i]] = -1;
+            attendes_feedback[_attendes[i]] = -1;
         }
     }
+    
     function Time() public view returns (bool){
        return (now >=  startTime  && now <= endTime);          
-  }
+     }
 
-  modifier checkTime(){
+    modifier checkTime(){
         require(Time());
         _;
+      }
+    function take_feedback(address _voter,uint _feedback)  public checkTime {
+          require(attendes_feedback[_voter] != 0);
+          attendes_feedback[_voter] = _feedback;
+          result[_feedback]++;
     }
-
-}
+ 
+  function seeResult() public view returns(uint8[] memory){
+          return result;
+  }
+ }
