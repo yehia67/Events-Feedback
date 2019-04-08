@@ -47,5 +47,12 @@ contract Session {
               endTime = _endTime;
               attendes = __attendes;
               lecturer = _lecturer;
-      }    
+              initAttendes(attendes);
+      } 
+
+    function initAttendes(address[] _attendes){
+           for(uint i=0 ; i < _attendes.length ; i++){
+            attendesFeedback[_attendes[i]] = -1;
+        }
+    }
 }
