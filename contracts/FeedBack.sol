@@ -17,7 +17,7 @@ contract FeedBack {
  
   function createSession(string memory _sessionName,string memory _description,uint _startTime,uint _endTime,string memory  _lecturer,address[] memory  _attendes) public
   {
-      session memory Session = session(_sessionName,_description,_startTime,_endTime,_lecturer,_attendes);
+      session storage Session = session(_sessionName,_description,_startTime,_endTime,_lecturer,_attendes);
       sessions[_sessionName] = Session;
       initFeedback(_sessionName);
     

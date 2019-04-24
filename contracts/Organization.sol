@@ -38,8 +38,8 @@ contract Session {
       address[] lecturer;
       address[] attendes; 
 
-      uint8[] result; 
-      mapping(address => uint) public attendes_feedback; //institution boardMembers
+      int[] result; 
+      mapping(address => int) public attendes_feedback; //institution boardMembers
   
       constructor (string memory _sessionName, string memory _description, uint _startTime,uint _endTime,address[] memory   _lecturer,address[] memory  _attendes) public{
               sessionName =  _sessionName;
@@ -65,13 +65,13 @@ contract Session {
         require(Time());
         _;
       }
-    function take_feedback(address _voter,uint _feedback)  public checkTime {
+    function take_feedback(address _voter,int _feedback)  public checkTime {
           require(attendes_feedback[_voter] != 0);
           attendes_feedback[_voter] = _feedback;
-          result[_feedback]++;
+          result[_feedback] = result[_feedback] +1;
     }
  
-  function seeResult() public view returns(uint8[] memory){
+  function seeResult() public view returns(int[] memory){
           return result;
   }
  }
