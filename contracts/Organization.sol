@@ -65,10 +65,10 @@ contract Session {
         require(Time());
         _;
       }
-    function take_feedback(address _voter,int _feedback)  public checkTime {
+    function take_feedback(address _voter,uint8 _feedback)  public checkTime {
           require(attendes_feedback[_voter] != 0);
           attendes_feedback[_voter] = _feedback;
-          result[_feedback] = result[_feedback] +1;
+          result[_feedback]++;
     }
  
   function seeResult() public view returns(int[] memory){
