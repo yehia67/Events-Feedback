@@ -19,8 +19,8 @@ contract Organization {
      ) public  onlyCreator returns(address) {
         
         Session sessionAddress = new Session(_sessionName , _description , _startTime , _endTime, _lecturer,_attendes );
-        emit sessionnCreated(_sessionName,sessionAddress,creator);
-        return sessionAddress;
+        emit sessionnCreated(_sessionName,address(sessionAddress),creator);
+        return address(sessionAddress);
      }
   
 }

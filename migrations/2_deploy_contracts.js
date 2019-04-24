@@ -1,6 +1,6 @@
-const FeedBack = artifacts.require("FeedBack");
+const Organization = artifacts.require("Organization");
 
 module.exports = function(deployer) {
     //deployer.link(ConvertLib, MetaCoin);
-    deployer.deploy(FeedBack);
+    deployer.deploy(Organization);
 };
