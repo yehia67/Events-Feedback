@@ -32,7 +32,7 @@ const App = {
         var contractAddress;
         const { createdSession } = this.meta.methods;
         contractAddress = await createdSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).send({ from: this.account });
-        alert(contractAddress);
+        console.log(contractAddress);
     },
 
     getSession: async function(_sessionName) {
@@ -65,7 +65,7 @@ const App = {
         var lecturers = $('#lecturers').val().split(',');
 
         var attendes = $('#attendes').val().split(',');
-        console.log(lecturers);
+
         this.createdSession(sessionName, discription, start, nofDaysInSecond + end, lecturers, attendes);
 
         // this.getSession(sessionName);
