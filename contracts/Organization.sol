@@ -40,8 +40,12 @@ contract Session {
 
       int[] result; 
       mapping(address => int) public attendes_feedback; //institution boardMembers
-  
-      constructor (string memory _sessionName, string memory _description, uint _startTime,uint _endTime,address[] memory   _lecturer,address[] memory  _attendes) public{
+      modifier onTime(uint _startTime){
+            require(now < _startTime);
+            _;
+      }
+      constructor (string memory _sessionName, string memory _description, uint _startTime,uint _endTime,address[] memory   _lecturer,address[] memory  _attendes) public onTime(_startTime){
+              
               sessionName =  _sessionName;
               description = _description;
               startTime = _startTime;
@@ -50,7 +54,7 @@ contract Session {
               lecturer = _lecturer;
               initAttendes(attendes);
       } 
-
+      
     function initAttendes(address[] memory _attendes) private{
            for(uint i=0 ; i < _attendes.length ; i++){
             attendes_feedback[_attendes[i]] = -1;

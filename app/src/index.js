@@ -1,5 +1,5 @@
 import Web3 from "web3";
-import FeedBackArtifact from "../../build/contracts/FeedBack.json";
+import OrganizationArtifact from "../../build/contracts/Organization.json";
 
 const App = {
     web3: null,
@@ -12,9 +12,9 @@ const App = {
         try {
             // get contract instance
             const networkId = await web3.eth.net.getId();
-            const deployedNetwork = FeedBackArtifact.networks[networkId];
+            const deployedNetwork = OrganizationArtifact.networks[networkId];
             this.meta = new web3.eth.Contract(
-                FeedBackArtifact.abi,
+                OrganizationArtifact.abi,
                 deployedNetwork.address,
             );
 
@@ -28,9 +28,11 @@ const App = {
     },
 
     //Create session
-    createSession: async function(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes) {
-        const { createSession } = this.meta.methods;
-        await createSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).send({ from: this.account });
+    createdSession: async function(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes) {
+        var contractAddress;
+        const { createdSession } = this.meta.methods;
+        contractAddress = await createdSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).send({ from: this.account });
+        alert(contractAddress);
     },
 
     getSession: async function(_sessionName) {
@@ -60,13 +62,13 @@ const App = {
         var noOfDays = $('#no-of-days').val();
         var nofDaysInSecond = noOfDays * 24 * 60 * 60;
 
-        var lecturers = $('#lecturers').val();
+        var lecturers = $('#lecturers').val().split(',');
 
         var attendes = $('#attendes').val().split(',');
+        console.log(lecturers);
+        this.createdSession(sessionName, discription, start, nofDaysInSecond + end, lecturers, attendes);
 
-        this.createSession(sessionName, discription, start, nofDaysInSecond + end, lecturers, attendes);
-
-        this.getSession(sessionName);
+        // this.getSession(sessionName);
     },
     //Take Feedback
     takeVote: async function() {
