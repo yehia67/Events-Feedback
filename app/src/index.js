@@ -30,9 +30,12 @@ const App = {
     //Create session
     createdSession: async function(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes) {
         var contractAddress;
+        var address;
         const { createdSession } = this.meta.methods;
         contractAddress = await createdSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).send({ from: this.account });
-        console.log(contractAddress);
+        var address = await createdSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).call();
+        console.log(address);
+        alert("Contract created successfully contact addresss is " + address);
     },
 
     getSession: async function(_sessionName) {
