@@ -8,7 +8,7 @@ contract Organization {
      /*  modifier onlyCreator(){
         require(msg.sender == creator);
         _;
-    } 0x88260a1eb5a2b6c66fa184e4b383a9e3ffa2ce15,0xf695b57bd17dae4738b0eebb88f264b5ba4557d6,0x030828d9fbd35fc8a72e29bd6cd28fb031cf4f7e,0x627a1fd473f88d3fd648551ce7b6814d62a83034 */
+    } */
      function createdSession(
       string memory _sessionName,
       string memory _description,
@@ -22,7 +22,12 @@ contract Organization {
         emit sessionnCreated(_sessionName,address(sessionAddress),creator);
         return address(sessionAddress);
      }
-  
+       function hello()  public view returns(uint8)  {
+      return 110;
+    }
+    
+
+   
 }
 
 //Session
@@ -60,7 +65,7 @@ contract Session {
             attendes_feedback[_attendes[i]] = -1;
         }
     }
-    
+   
     function Time() public view returns (bool){
        return (now >=  startTime  && now <= endTime);          
      }

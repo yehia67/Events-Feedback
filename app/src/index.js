@@ -77,9 +77,12 @@ const App = {
     takeVote: async function() {
         var _sessionName = $('#feedback_session_name').val();
         var _feedback = $('#feedback').val();
-        const { takeVote } = this.meta.methods;
-        await takeVote(_sessionName, _feedback).send({ from: this.account });
-        alert("done");
+        //const { takeVote } = this.meta.methods;
+        //await takeVote(_sessionName, _feedback).send({ from: this.account });
+        var h;
+        const { hello } = this.meta.methods;
+        await hello().call();
+        alert("done " + h);
     },
     //See Result
     getResult: async function() {
