@@ -1,6 +1,6 @@
 import Web3 from "web3";
 import OrganizationArtifact from "../../build/contracts/Organization.json";
-
+import SessionArtifact from "../../build/contracts/Session.json";
 const App = {
     web3: null,
     account: null,
@@ -26,16 +26,32 @@ const App = {
             console.error("Could not connect to contract or chain.");
         }
     },
-
+    initSession: async function(_address) {
+        console.log("the address in " + _address);
+        /*  var abi = web3.eth.contract(SessionArtifact.abi);
+         console.log(abi);
+         var session = abi.at(_address); */
+        session = new web3.eth.Contract(SessionArtifact.abi, _address);
+        alert("your session is created!!")
+        console.log(session);
+        this.takefeeback(session);
+    },
+    takefeeback: function(_session) {
+        _session.take_feedback('0xa8ff46045fa2c6a0af361819b62126e1b0ec8909', 5, function(error, result) {
+            if (!error) {
+                console.log(result + " 123");
+            } else
+                console.error(error);
+        });
+    },
     //Create session
     createdSession: async function(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes) {
-        var contractAddress;
-        var address;
+        var sessionAddress;
         const { createdSession } = this.meta.methods;
-        contractAddress = await createdSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).send({ from: this.account });
-        var address = await createdSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).call();
-        console.log(address);
-        alert("Contract created successfully contact addresss is " + address);
+        await createdSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).send({ from: this.account });
+        sessionAddress = await createdSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).call();
+        this.initSession(sessionAddress);
+        alert("Contract created successfully contact addresss is " + sessionAddress);
     },
 
     getSession: async function(_sessionName) {
@@ -74,13 +90,13 @@ const App = {
         // this.getSession(sessionName);
     },
     //Take Feedback
-    takeVote: async function() {
+    take_feedback: async function() {
         var _sessionName = $('#feedback_session_name').val();
         var _feedback = $('#feedback').val();
-        //const { takeVote } = this.meta.methods;
-        //await takeVote(_sessionName, _feedback).send({ from: this.account });
+        const { take_feedback } = await contractObject.hello();
+        await take_feedback(_sessionName, _feedback).send({ from: this.account });
         var h;
-        const { hello } = this.meta.methods;
+        const { hello } = contractObject.meta.methods;
         await hello().call();
         alert("done " + h);
     },

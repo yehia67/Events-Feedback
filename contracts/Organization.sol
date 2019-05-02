@@ -1,35 +1,4 @@
 pragma solidity 0.5.0;
-
-contract Organization {
-
-     address creator;
-     event sessionnCreated(string name,address sessionAddress ,address creator);
-     
-     /*  modifier onlyCreator(){
-        require(msg.sender == creator);
-        _;
-    } */
-     function createdSession(
-      string memory _sessionName,
-      string memory _description,
-      uint _startTime,
-      uint _endTime,
-      address[] memory _lecturer,
-      address[] memory _attendes
-     ) public   returns(address) {
-        
-        Session sessionAddress = new Session(_sessionName , _description , _startTime , _endTime, _lecturer,_attendes );
-        emit sessionnCreated(_sessionName,address(sessionAddress),creator);
-        return address(sessionAddress);
-     }
-       function hello()  public view returns(uint8)  {
-      return 110;
-    }
-    
-
-   
-}
-
 //Session
 
 contract Session {
@@ -83,4 +52,30 @@ contract Session {
   function seeResult() public view returns(int[] memory){
           return result;
   }
+ 
  }
+
+contract Organization {
+
+     address creator;
+     event sessionnCreated(string name,address sessionAddress ,address creator);
+     
+     /*  modifier onlyCreator(){
+        require(msg.sender == creator);
+        _;
+    } */
+     function createdSession(
+      string memory _sessionName,
+      string memory _description,
+      uint _startTime,
+      uint _endTime,
+      address[] memory _lecturer,
+      address[] memory _attendes
+     ) public   returns(address) {
+        
+        Session sessionAddress = new Session(_sessionName , _description , _startTime , _endTime, _lecturer,_attendes );
+        emit sessionnCreated(_sessionName,address(sessionAddress),creator);
+        return address(sessionAddress);
+     }
+}
+
