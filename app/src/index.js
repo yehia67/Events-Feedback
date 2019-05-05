@@ -1,6 +1,8 @@
 import Web3 from "web3";
 import OrganizationArtifact from "../../build/contracts/Organization.json";
 import SessionArtifact from "../../build/contracts/Session.json";
+var SessionAdress;
+var SessionContract;
 const App = {
     web3: null,
     account: null,
@@ -37,20 +39,25 @@ const App = {
     },
     //Create session
     createdSession: async function(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes) {
-        var sessionAddress;
         const { createdSession } = this.meta.methods;
         await createdSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).send({ from: this.account });
-        sessionAddress = await createdSession(_sessionName, _description, _startTime, _endTime, _lecturer, _attendes).call();
-        this.initSession(sessionAddress);
-        alert("Contract created successfully contact addresss is " + sessionAddress);
     },
 
-    getSession: async function(_sessionName) {
-        let discription = 10;
-        const { getSession } = this.meta.methods;
-        discription = await getSession(_sessionName).call();
+    getSession: async function() {
+        var address;
+        const { getAddress } = this.meta.methods;
+        address = await getAddress().call();
+        SessionAdress = address;
     },
-
+    initSession: async function() {
+        var abi = web3.eth.contract(SessionArtifact.abi);
+        SessionContract = abi.at(SessionAdress);
+        console.log(SessionContract);
+        console.log(SessionContract.address);
+        var result = SessionContract.seeResult();
+        console.log(result);
+        SessionContract.take_feedback('0xa8ff46045fa2c6a0af361819b62126e1b0ec8909', 5, { value: 200, gas: 2000 });
+    },
     //Events Time
     parseDate: function(input) {
         var parts = input.match(/(\d+)/g);
@@ -78,7 +85,8 @@ const App = {
 
         this.createdSession(sessionName, discription, start, nofDaysInSecond + end, lecturers, attendes);
 
-        // this.getSession(sessionName);
+        this.getSession();
+        this.initSession();
     },
     //Take Feedback
     take_feedback: async function() {
