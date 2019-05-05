@@ -26,16 +26,7 @@ const App = {
             console.error("Could not connect to contract or chain.");
         }
     },
-    initSession: async function(_address) {
-        console.log("the address in " + _address);
-        /*  var abi = web3.eth.contract(SessionArtifact.abi);
-         console.log(abi);
-         var session = abi.at(_address); */
-        session = new web3.eth.Contract(SessionArtifact.abi, _address);
-        alert("your session is created!!")
-        console.log(session);
-        this.takefeeback(session);
-    },
+
     takefeeback: function(_session) {
         _session.take_feedback('0xa8ff46045fa2c6a0af361819b62126e1b0ec8909', 5, function(error, result) {
             if (!error) {

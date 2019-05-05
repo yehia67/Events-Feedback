@@ -58,12 +58,19 @@ contract Session {
 contract Organization {
 
      address creator;
+     address Address;
      event sessionnCreated(string name,address sessionAddress ,address creator);
      
      /*  modifier onlyCreator(){
         require(msg.sender == creator);
         _;
     } */
+    function getAddress() public view returns(address){
+      return Address;
+    }
+      function setAddress(address _address) private{
+      Address = _address;
+    }
      function createdSession(
       string memory _sessionName,
       string memory _description,
@@ -75,6 +82,7 @@ contract Organization {
         
         Session sessionAddress = new Session(_sessionName , _description , _startTime , _endTime, _lecturer,_attendes );
         emit sessionnCreated(_sessionName,address(sessionAddress),creator);
+        setAddress(address(sessionAddress));
         return address(sessionAddress);
      }
 }
